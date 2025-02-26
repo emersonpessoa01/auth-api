@@ -2,7 +2,6 @@ package io.github.emersonpessoa.auth_api.models;
 
 import jakarta.persistence.GeneratedValue;
 
-import org.springframework.context.annotation.Conditional;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
@@ -19,11 +18,17 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioModel {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String login;
     private String senha;
+
+    public Usuario(String nome, String login, String senha) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
 }

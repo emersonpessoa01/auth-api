@@ -5,16 +5,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.emersonpessoa.auth_api.dtos.UsuarioDto;
+import io.github.emersonpessoa.auth_api.services.UsuarioService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @RequestMapping("/usuarios")
 @RestController
 public class UsuarioController {
     // Conceito: Camada que recebe as requisições HTTP e direciona para os serviços.
-    // Exemplo: @RestController
+    // Exemplo: @
+    
+    @Autowired
+    private UsuarioService usuarioService;
 
     @PostMapping
     private UsuarioDto salvar(@RequestBody UsuarioDto usuarioDto) {
-        return usuarioDto;
+        return usuarioService.salvar(usuarioDto);
     }
 }
