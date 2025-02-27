@@ -9,6 +9,8 @@ import io.github.emersonpessoa.auth_api.services.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RequestMapping("/usuarios")
 @RestController
@@ -23,4 +25,9 @@ public class UsuarioController {
     private UsuarioDto salvar(@RequestBody UsuarioDto usuarioDto) {
         return usuarioService.salvar(usuarioDto);
     }
+    @GetMapping
+    public String Rota() {
+        return "API de autenticação funcionando!";
+    }
+    
 }
