@@ -1,5 +1,8 @@
 package io.github.emersonpessoa.auth_api.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum RoleEnum {
     ADMIN("admin"), 
     USER("user");
