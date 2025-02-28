@@ -3,8 +3,10 @@ package io.github.emersonpessoa.auth_api.models;
 import jakarta.persistence.GeneratedValue;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import io.github.emersonpessoa.auth_api.enums.RoleEnum;
@@ -39,44 +41,48 @@ public class Usuario implements UserDetails {
     }
 
     @Override
+    //Conceito: Uma coleção de objetos que representam as permissões do usuário.
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        return null;
+        // Tanto o ADMIN como o USER terão acesso ao recursos, porém o ADMIN terá acesso a mais recursos
+        if (this.role == RoleEnum.ADMIN) {
+            return List.of(
+                new SimpleGrantedAuthority("ROLE_ADMIN"), 
+                new SimpleGrantedAuthority("ROLE_USER")
+                );
+            
+        }
+        return List.of(
+            new SimpleGrantedAuthority("ROLE_USER")
+        );
     }
 
     @Override
     public String getPassword() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.senha;
     }
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.login;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }

@@ -13,7 +13,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     // repositories → Interface que interage com o banco, estendendo JpaRepository ou CrudRepository
     Usuario findByLogin(String login);
 
-    List<Usuario> findAll();
 
 
     
