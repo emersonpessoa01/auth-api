@@ -14,7 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 
-//Criando um endpoint responsável para autenticação
+//Criando um endpoint responsável pela autenticação
 @RestController
 @RequestMapping("/auth")
 public class autenticacaoController {
