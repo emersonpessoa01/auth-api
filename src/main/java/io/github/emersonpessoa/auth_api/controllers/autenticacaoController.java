@@ -34,7 +34,8 @@ public class autenticacaoController {
         authenticationManager.authenticate(usuarioAutenticationToken);
         
         // return "token...";
-        // Criado varável token recebe o método obterToken da classe AutenticacaoServiceImpl
+
+        // Criado variável token que recebe o método obterToken da classe AutenticacaoServiceImpl
         var token = autenticacaoService.obterToken(authDto);
         return "Token: "+ token;
     }

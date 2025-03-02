@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import io.github.emersonpessoa.auth_api.enums.RoleEnum;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,16 +29,22 @@ import lombok.Setter;
 public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Long id;
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String login;
+    @Column(nullable = false)
     private String senha;
+    @Column(nullable = false)
     private RoleEnum role;
 
-    public Usuario(String nome, String login, String senha) {
+    public Usuario(String nome, String login, String senha, RoleEnum role) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.role = role;
     }
 
     @Override
